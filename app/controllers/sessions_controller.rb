@@ -8,4 +8,9 @@ class SessionsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def current_user
+  end
 end
