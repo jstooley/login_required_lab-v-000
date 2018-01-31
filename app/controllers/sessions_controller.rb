@@ -1,17 +1,18 @@
 class SessionsController < ApplicationController
-
-  def index
-  end
-
   def new
   end
 
-  def destroy
+  def create
+    if !params[:name] || params[:name].empty?
+      redirect_to controller: 'sessions', action: 'new'
+    else
+      session[:name] = params[:name]
+      redirect_to controller: 'application', action: 'hello'
+    end
   end
 
-  private
-
-  def current_user
-    session[:name]
+  def destroy
+    session.delete :name
+    redirect_to controller: 'application', action: 'hello'
   end
 end
