@@ -12,5 +12,6 @@ class SessionsController < ApplicationController
   private
 
   def current_user
+    session[:name]
   end
 end
